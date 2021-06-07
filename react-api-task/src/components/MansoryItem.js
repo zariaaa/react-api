@@ -1,7 +1,7 @@
-import React , {useEffect , useState} from 'react';
+import React , { useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart , faPhotoVideo } from '@fortawesome/free-solid-svg-icons';
-import  { Container}  from 'react-bootstrap';
+import  { Container }  from 'react-bootstrap';
 
 const MansoryItem = () => {
     const [error, setError] = useState(null);
@@ -23,7 +23,8 @@ const MansoryItem = () => {
         )
     }, [])
     
-    console.log(items);
+    // Check out the output data
+    // console.log(items);
 
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -33,63 +34,48 @@ const MansoryItem = () => {
       return (
           
           <div className="mansory-card">
-
               <Container>
-              <h3>Latest Posts Unsplash</h3>
-               <ul className="container-card">
-                   
-                    {items.map(item => (
-                        <li className="card-content" key={item.id}>
-                            <div className="main-card-content">
-
-                            
-                            <div className="card-image">
-                                <img src={item.urls.full} alt={item.user.first_name}/>
-                                <div className="card-info">
-                                
-                                <div class="middle">
-                                <div className="card-username">
-                                    <h3>@{item.user.username}</h3>
-                                </div>
-                                <div className="card-name">
-                                   <h3>{item.user.first_name}</h3>
-                                </div>
-                                <div className="card-bio">
-                                   <p>{item.user.bio}</p>
-                                </div>
-                                <div className="card-counts">
-                                    <div className="card-likes">
-                                        <FontAwesomeIcon icon={faHeart} color="#c20071" />
-                                        <div className="card-counts-content">
-                                            {item.likes}
+                <h3>Latest Posts Unsplash</h3>
+                    <ul className="container-card">
+                        {items.map(item => (
+                            <li className="card-content" key={item.id}>
+                                <div className="main-card-content">
+                                    <div className="card-image">
+                                        <img src={item.urls.full} alt={item.user.first_name}/>
+                                        <div className="card-info">
+                                            <div class="middle">
+                                                <div className="card-username">
+                                                    <h3>@{item.user.username}</h3>
+                                                </div>
+                                                <div className="card-name">
+                                                    <h3>{item.user.first_name}</h3>
+                                                </div>
+                                                <div className="card-bio">
+                                                    <p>{item.user.bio}</p>
+                                                </div>
+                                                <div className="card-counts">
+                                                    <div className="card-likes">
+                                                        <FontAwesomeIcon icon={faHeart} color="#c20071" />
+                                                        <div className="card-counts-content">
+                                                            {item.likes}
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-photos">
+                                                        <FontAwesomeIcon icon={faPhotoVideo} color="#e78404" />
+                                                        <div className="card-counts-content">
+                                                            {item.user.total_photos}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="card-photos">
-                                        <FontAwesomeIcon icon={faPhotoVideo} color="#e78404" />
-                                        <div className="card-counts-content">
-                                            {item.user.total_photos}
-                                        </div>
-                                    </div>
                                 </div>
-                                </div>
-                               
-                            </div>
-                            </div>
-                            
-                           
-
-
-                            </div>
-                            
-                            
-                        </li>
-                       
-                    ))}
-                    
-                </ul>
+                            </li>
+                        ))}
+                    </ul>
                 </Container>
           </div>
-       
       );
     }
   }
